@@ -1,4 +1,6 @@
 <?php
+
+// divide o array em duas partes
 function merge($left, $right, $option)
 {
     $res = array();
@@ -32,6 +34,8 @@ function merge($left, $right, $option)
     }
     return $res;
 }
+
+// ordena o array usando o merge sort
 function mergeSort($array, $option)
 {
     if (count($array) <= 1)
@@ -44,6 +48,8 @@ function mergeSort($array, $option)
     $right = mergeSort($right, $option);
     return merge($left, $right, $option);
 }
+
+// divide o arquivo em blocos, ordena os blocos e salva em arquivos temporários
 function sortBlocks($inputFile, $blockSize, $option)
 {
     $blockNumber = 0;
@@ -68,6 +74,8 @@ function sortBlocks($inputFile, $blockSize, $option)
     fclose($file);
     return $blocks;
 }
+
+// mescla os blocos ordenados em um único arquivo
 function mergeBlocks($blocks, $outputFile, $option)
 {
     $blockHandles = [];
@@ -117,6 +125,8 @@ function mergeBlocks($blocks, $outputFile, $option)
         unlink($block);
     }
 }
+
+// Mostra o menu de opções
 function showMenu()
 {
     echo "Escolha a ordem de classificação:\n";
@@ -141,4 +151,5 @@ if ($option == 1) {
 } else {
     echo "Opção inválida.\n";
 }
+
 
